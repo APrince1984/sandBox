@@ -28,6 +28,16 @@ namespace Utilities
             return BuildRandomString(length, AlphaNumericChars);
         }
 
+        public static DateTime GetRandomDateInThePast()
+        {
+            return DateTime.Now.AddDays(-(GetRandomNumber(2)-1));
+        }
+
+        public static DateTime GetRandomDateInTheFuture()
+        {
+            return DateTime.Now.AddDays(GetRandomNumber(2)+1);
+        }
+
         private static string BuildRandomString(int length, string chars)
         {
             var stringChars = new char[length];
@@ -37,5 +47,7 @@ namespace Utilities
 
             return new String(stringChars);
         }
+
+
     }
 }

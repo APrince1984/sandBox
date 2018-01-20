@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Utilities.Tests
 {
@@ -47,6 +48,20 @@ namespace Utilities.Tests
         {
             var length = RandomUtil.GetRandomNumber(2);
             TestReturnedStringValue(RandomUtil.GetRandomAlphaNumericString(length), length);
+        }
+
+        [Repeat(10000)]
+        [Test]
+        public void GetRandomDateInThePast_DateIsInThePast()
+        {
+            Assert.Less(RandomUtil.GetRandomDateInThePast(), DateTime.Now);
+        }
+
+        [Repeat(10000)]
+        [Test]
+        public void GetRandomDateInTheFuture_DateIsInTheFuture()
+        {
+            Assert.Greater(RandomUtil.GetRandomDateInTheFuture(), DateTime.Now);
         }
 
         private static void TestReturnedIntValue(int length, int randomInt)
