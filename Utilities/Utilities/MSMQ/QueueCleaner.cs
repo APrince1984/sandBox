@@ -7,15 +7,13 @@ namespace Utilities.MSMQ
     {
         public static void PurgeAllQueues()
         {
-            var queues = GetAllQueues();
-            foreach (var queue in queues)
+            foreach (var queue in GetAllQueues())
                 queue.Purge();
         }
 
         public static void DeleteAllQueues()
         {
-            var queues = GetAllQueues();
-            foreach (var queue in queues)
+            foreach (var queue in GetAllQueues())
                 MessageQueue.Delete(queue.Path);
         }
 
