@@ -12,10 +12,10 @@ namespace Utilities.Tests
 
         [Repeat(1000)]
         [Test]
-        public void GetMinimumIntValueAlwaysReturns0()
+        public void GetMinimumIntValueAlwaysReturns1()
         {
             _integer = RandomUtil.GetRandomNumber(2);
-            Assert.AreEqual(0, _integer.GetMinimumIntValue());
+            Assert.AreEqual(1, _integer.GetMinimumIntValue());
         }
 
         [Test]

@@ -4,7 +4,7 @@
     {
         public static int GetMinimumIntValue(this int integer)
         {
-            return 0;
+            return 1;
         }
 
         public static int GetMaximumIntValue(this int integer)

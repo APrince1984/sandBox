@@ -14,7 +14,7 @@ namespace Utilities
                 length = 6;
 
             var random = new Random();
-            return random.Next(0, length.GetMaximumIntValue());
+            return random.Next(length.GetMinimumIntValue(), length.GetMaximumIntValue());
         }
 
         public static string GetRandomString(int length = 10)
