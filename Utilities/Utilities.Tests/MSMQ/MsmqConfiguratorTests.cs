@@ -8,13 +8,16 @@ namespace Utilities.Tests.MSMQ
     [TestFixture]
     public class MsmqConfiguratorTests
     {
+        [TearDown]
+        public void CleanUp()
+        {
+            QueueCleaner.DeleteAllQueues();
+        }
+
         [Test]
         public void MsmqConfigurator_QueueNameGiven_CreatesQueueIfNotExists()
         {
-            var queue = CreateAndTestMsmQueueWithQueueName();
-            
-            // CleanUp
-            DeleteAndTestMsmQueue(queue);
+            CreateAndTestMsmQueueWithQueueName();
         }
 
         [Test]
@@ -29,9 +32,6 @@ namespace Utilities.Tests.MSMQ
         {
             var queue = CreateAndTestMsmQueueWithQueueName();
             Assert.IsNotNull(queue.GetQueuePath());
-
-            // CleanUp
-            DeleteAndTestMsmQueue(queue);
         }
 
         [Test]
@@ -45,9 +45,6 @@ namespace Utilities.Tests.MSMQ
             Assert.IsTrue(messagesOnQueue.Any());
             Assert.AreEqual(1, messagesOnQueue.Count());
             Assert.AreEqual(message, messagesOnQueue[0].Body.ToString());
-
-            // CleanUp
-            DeleteAndTestMsmQueue(queue);
         }
 
         [Test]
@@ -56,9 +53,6 @@ namespace Utilities.Tests.MSMQ
             var queue = CreateAndTestMsmQueueWithQueueName();
             var messagesOnQueue = queue.GetMessagesFromQueue();
             Assert.IsTrue(!messagesOnQueue.Any());
-
-            // CleanUp
-            DeleteAndTestMsmQueue(queue);
         }
 
         [Test]
@@ -69,9 +63,6 @@ namespace Utilities.Tests.MSMQ
 
             var messagesOnQueue = queue.GetMessagesFromQueue();
             Assert.AreEqual(numberOfMessages, messagesOnQueue.Count());
-
-            // CleanUp
-            DeleteAndTestMsmQueue(queue);
         }
 
         [Test]
@@ -81,9 +72,6 @@ namespace Utilities.Tests.MSMQ
             SendRandomMessagesToQueue(queue);
             queue.PurgeQueue();
             Assert.IsTrue(!queue.GetMessagesFromQueue().Any());
-
-            // CleanUp
-            DeleteAndTestMsmQueue(queue);
         }
 
         private static MsmqConfigurator CreateAndTestMsmQueueWithQueueName()

@@ -8,6 +8,12 @@ namespace Utilities.Tests.MSMQ
     [TestFixture]
     public class QueueCleanerTests
     {
+        [TearDown]
+        public void CleanUp()
+        {
+            QueueCleaner.DeleteAllQueues();
+        }
+
         [Test]
         public void GetAllQueues_NoQueuesExist_ReturnsEmptyList()
         {
@@ -19,9 +25,6 @@ namespace Utilities.Tests.MSMQ
         {
             CreateRandomNumberOfQueues();
             Assert.IsTrue(QueueCleaner.GetAllQueues().Any());
-
-            //CleanUp
-            QueueCleaner.DeleteAllQueues();
         }
 
         [Test]
@@ -45,10 +48,6 @@ namespace Utilities.Tests.MSMQ
             var queues = QueueCleaner.GetAllQueues();
             foreach (var queue in queues)
                 Assert.IsTrue(!queue.GetAllMessages().Any());
-
-            // CleanUp
-            QueueCleaner.DeleteAllQueues();
-            
         }
 
         private static void SendRandomMessageToAllQueues()
