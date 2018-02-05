@@ -13,7 +13,7 @@ namespace FootBallData.Test.Tables.Queries
         [Test]
         public override void GetEntityById_EntityDoesExist_ReturnsEntity()
         {
-            var title = TitleCommands.SaveTitle(Context, new Title { Description = RandomUtil.GetRandomString() });
+            var title = TitleCommands.SaveTitle(new Title { Description = RandomUtil.GetRandomString() }, Context);
             Assert.IsNotNull(TitleQueries.GetTitleById(Context, title.IdTitle));
         }
 
@@ -27,7 +27,7 @@ namespace FootBallData.Test.Tables.Queries
         public void GetTitleByPartOfDescription_ReturnsListOfTitles()
         {
             var description = RandomUtil.GetRandomString(25);
-            TitleCommands.SaveTitle(Context, new Title {Description = description});
+            TitleCommands.SaveTitle(new Title { Description = description }, Context);
             var titles = TitleQueries.GetTitlesByPartOfDescription(Context,
                 description.Substring(RandomUtil.GetRandomNumber(1), RandomUtil.GetRandomNumber(1) + 1));
             Assert.IsNotEmpty(titles);

@@ -14,7 +14,7 @@ namespace FootBallData.Test.Tables.Commands
         {
             var person = CreatePerson();
 
-            person = PersonCommands.SavePerson(Context, person);
+            person.SavePerson(Context);
             Assert.IsNotNull(person);
             Assert.IsNotNull(person.IdPerson);
         }
@@ -24,14 +24,14 @@ namespace FootBallData.Test.Tables.Commands
         {
             var person = CreatePerson();
 
-            person = PersonCommands.SavePerson(Context, person);
+            person.SavePerson(Context);
             Assert.IsNotNull(person);
             Assert.IsNotNull(person.IdPerson);
 
             var previousFirstName = person.FirstName;
             var newFirstName = RandomUtil.GetRandomString(15);
             person.FirstName = newFirstName;
-            person = PersonCommands.SavePerson(Context, person);
+            person.SavePerson(Context);
 
             var personDb = PersonQueries.GetPersonById(Context, person.IdPerson);
             Assert.AreNotEqual(previousFirstName, personDb.FirstName);

@@ -12,8 +12,7 @@ namespace FootBallData.Test.Tables.Commands
         [Test]
         public override void SaveEntity_EntityIsNew_EntityIsCreated()
         {
-            var competition = CompetitionCommands.SaveCompetition(Context,
-                new Competition { Name = RandomUtil.GetRandomString(), Description = RandomUtil.GetRandomString(100) });
+            Competition competition = CompetitionCommands.SaveCompetition(new Competition { Name = RandomUtil.GetRandomString(), Description = RandomUtil.GetRandomString(100) }, Context);
             Assert.IsNotNull(competition.IdCompetition);
         }
 
@@ -23,12 +22,12 @@ namespace FootBallData.Test.Tables.Commands
             var name = RandomUtil.GetRandomString();
             var description = RandomUtil.GetRandomString(100);
             var competition =
-                CompetitionCommands.SaveCompetition(Context, new Competition { Name = name, Description = description });
+                CompetitionCommands.SaveCompetition(new Competition { Name = name, Description = description }, Context);
             var newName = RandomUtil.GetRandomString();
             var newDescription = RandomUtil.GetRandomString(100);
             competition.Name = newName;
             competition.Description = newDescription;
-            CompetitionCommands.SaveCompetition(Context, competition);
+            competition.SaveCompetition(Context);
 
             var competitionDb = CompetitionQueries.GetCompetitionById(Context, competition.IdCompetition);
             Assert.IsNotNull(competitionDb);

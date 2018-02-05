@@ -14,8 +14,7 @@ namespace FootBallData.Test.Tables.Queries
         public void GetCompetitionByPartOfName_ReturnsListOfCompetitions()
         {
             var name = RandomUtil.GetRandomString(30);
-            CompetitionCommands.SaveCompetition(Context,
-                new Competition {Name = name, Description = RandomUtil.GetRandomString(150)});
+            CompetitionCommands.SaveCompetition(new Competition{Name = name, Description = RandomUtil.GetRandomString(150)}, Context);
             var competitions = CompetitionQueries.GetCompetitionByPartOfName(Context,
                 name.Substring(RandomUtil.GetRandomNumber(1), RandomUtil.GetRandomNumber(1) + 1));
             Assert.IsNotEmpty(competitions);
@@ -26,8 +25,7 @@ namespace FootBallData.Test.Tables.Queries
         public void GetCompetitionByPartOfDescription_ReturnsListOfCompetitions()
         {
             var description = RandomUtil.GetRandomString(200);
-            CompetitionCommands.SaveCompetition(Context,
-                new Competition { Name = RandomUtil.GetRandomString(30), Description = description });
+            CompetitionCommands.SaveCompetition(new Competition { Name = RandomUtil.GetRandomString(30), Description = description }, Context);
             var competitions = CompetitionQueries.GetCompetitionByPartOfDescription(Context,
                 description.Substring(RandomUtil.GetRandomNumber(1), RandomUtil.GetRandomNumber(2) + 1));
             Assert.IsNotEmpty(competitions);
@@ -43,8 +41,7 @@ namespace FootBallData.Test.Tables.Queries
         [Test]
         public override void GetEntityById_EntityDoesExist_ReturnsEntity()
         {
-            var competition = CompetitionCommands.SaveCompetition(Context,
-                new Competition { Name = RandomUtil.GetRandomString(), Description = RandomUtil.GetRandomString(150) });
+            var competition = CompetitionCommands.SaveCompetition(new Competition { Name = RandomUtil.GetRandomString(), Description = RandomUtil.GetRandomString(150) }, Context);
             Assert.IsNotNull(CompetitionQueries.GetCompetitionById(Context, competition.IdCompetition));
         }
     }

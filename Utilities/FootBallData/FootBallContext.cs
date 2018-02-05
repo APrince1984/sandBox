@@ -18,5 +18,7 @@ namespace FootBallData
         public DbSet<Title> Titles { get; set; }
 
         public DbSet<Competition> Competitions { get; set; }
+
+        public DbSet<Serie> Series { get; set; }
     }
 }
