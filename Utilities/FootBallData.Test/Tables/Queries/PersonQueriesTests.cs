@@ -88,6 +88,14 @@ namespace FootBallData.Test.Tables.Queries
             Assert.Throws<Exception>(() => PersonQueries.GetPersonsBetweenBirthDates(Context, bDate1, bDate2));
         }
 
+        [Test]
+        public void GetPersonBetweendDates_NoDatesGiven_ReturnsPersonsForTodaysDate()
+        {
+            CreatePerson(RandomUtil.GetRandomString(), RandomUtil.GetRandomString(), DateTime.Now.Date);
+            var persons = PersonQueries.GetPersonsBetweenBirthDates(Context);
+            Assert.IsNotEmpty(persons);
+        }
+
         private Person CreatePerson(string firstName = null, string lastName = null, DateTime? bDate = null)
         {
             return PersonCommands.SavePerson(new Person
