@@ -1,5 +1,6 @@
 ﻿using FootBallData.Tables;
 using FootBallData.Tables.Commands;
+using FootBallData.Tables.Queries;
 using NUnit.Framework;
 using Utilities;
 
@@ -31,8 +32,10 @@ namespace FootBallData.Test.Tables.Commands
             var newFirstName = RandomUtil.GetRandomString(15);
             person.FirstName = newFirstName;
             person = PersonCommands.SavePerson(Context, person);
-            Assert.AreNotEqual(previousFirstName, person.FirstName);
-            Assert.AreEqual(newFirstName, person.FirstName);
+
+            var personDb = PersonQueries.GetPersonById(Context, person.IdPerson);
+            Assert.AreNotEqual(previousFirstName, personDb.FirstName);
+            Assert.AreEqual(newFirstName, personDb.FirstName);
         }
 
         private static Person CreatePerson()
