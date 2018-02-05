@@ -1,0 +1,30 @@
+USE [FootBall]
+GO
+
+/****** Object:  Table [dbo].[Team]    Script Date: 03/02/2018 3:33:21 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Team](
+	[ID_Team] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](100) NOT NULL,
+	[Description] [nvarchar](300) NOT NULL,
+	[ID_Serie] [int] NULL,
+ CONSTRAINT [PK_Team] PRIMARY KEY CLUSTERED 
+(
+	[ID_Team] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Team]  WITH CHECK ADD  CONSTRAINT [FK_Team_Serie] FOREIGN KEY([ID_Serie])
+REFERENCES [dbo].[Serie] ([ID_Serie])
+GO
+
+ALTER TABLE [dbo].[Team] CHECK CONSTRAINT [FK_Team_Serie]
+GO
+
+
