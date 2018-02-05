@@ -7,23 +7,23 @@ using Utilities;
 namespace FootBallData.Test.Tables.Commands
 {
     [TestFixture]
-    public class CompetitionCommandsTests : DataTestBase
+    public class CompetitionCommandsTests : CommandsBaseTests
     {
         [Test]
-        public void SaveCompetition_CompetitionIsNew_CompetitionIsCreated()
+        public override void SaveEntity_EntityIsNew_EntityIsCreated()
         {
             var competition = CompetitionCommands.SaveCompetition(Context,
-                new Competition {Name = RandomUtil.GetRandomString(), Description = RandomUtil.GetRandomString(100)});
+                new Competition { Name = RandomUtil.GetRandomString(), Description = RandomUtil.GetRandomString(100) });
             Assert.IsNotNull(competition.IdCompetition);
         }
 
         [Test]
-        public void SaveCompetition_CompetitionExists_CompetitionIsUpdated()
+        public override void SaveEntity_EntityExists_EntityIsUpdated()
         {
             var name = RandomUtil.GetRandomString();
             var description = RandomUtil.GetRandomString(100);
             var competition =
-                CompetitionCommands.SaveCompetition(Context, new Competition {Name = name, Description = description});
+                CompetitionCommands.SaveCompetition(Context, new Competition { Name = name, Description = description });
             var newName = RandomUtil.GetRandomString();
             var newDescription = RandomUtil.GetRandomString(100);
             competition.Name = newName;

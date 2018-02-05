@@ -111,6 +111,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tables\Commands\CommandsBaseTests.cs" />
     <Compile Include="Tables\Commands\CompetitionCommandsTests.cs" />
     <Compile Include="Tables\Commands\PersonCommandsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
