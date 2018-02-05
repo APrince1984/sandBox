@@ -108,6 +108,7 @@
     <Compile Include="Tables\Queries\CompetitionQueries.cs" />
     <Compile Include="Tables\Queries\PersonQueries.cs" />
     <Compile Include="Tables\Queries\TitleQueries.cs" />
+    <Compile Include="Tables\Serie.cs" />
     <Compile Include="Tables\Title.cs" />
   </ItemGroup>
   <ItemGroup>
