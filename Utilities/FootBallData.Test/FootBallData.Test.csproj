@@ -122,6 +122,7 @@
     <Compile Include="Tables\DataTestBase.cs" />
     <Compile Include="Tables\Queries\QueriesBaseTests.cs" />
     <Compile Include="Tables\Queries\SerieQueriesTests.cs" />
+    <Compile Include="Tables\Queries\TeamQueriesTests.cs" />
     <Compile Include="Tables\Queries\TitleQueriesTests.cs" />
   </ItemGroup>
   <ItemGroup>
