@@ -1,5 +1,6 @@
 ﻿using FootBallData.Tables;
 using FootBallData.Tables.Commands;
+using FootBallData.Tables.Queries;
 using NUnit.Framework;
 using Utilities;
 
@@ -23,8 +24,10 @@ namespace FootBallData.Test.Tables.Commands
             var newDescription = RandomUtil.GetRandomAlphaNumericString(30);
             title.Description = newDescription;
             TitleCommands.SaveTitle(Context, title);
-            Assert.AreNotEqual(description, title.Description);
-            Assert.AreEqual(newDescription, title.Description);
+
+            var titleDb = TitleQueries.GetTitleById(Context, title.IdTitle);
+            Assert.AreNotEqual(description, titleDb.Description);
+            Assert.AreEqual(newDescription, titleDb.Description);
 
         }
     }

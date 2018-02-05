@@ -116,6 +116,7 @@
     <Compile Include="Tables\Commands\TitleCommandsTests.cs" />
     <Compile Include="Tables\Queries\PersonQueriesTest.cs" />
     <Compile Include="Tables\DataTestBase.cs" />
+    <Compile Include="Tables\Queries\TitleQueriesTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

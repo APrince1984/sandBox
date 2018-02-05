@@ -104,6 +104,7 @@
     <Compile Include="Tables\Person.cs" />
     <Compile Include="Tables\Commands\PersonCommands.cs" />
     <Compile Include="Tables\Queries\PersonQueries.cs" />
+    <Compile Include="Tables\Queries\TitleQueries.cs" />
     <Compile Include="Tables\Title.cs" />
   </ItemGroup>
   <ItemGroup>
