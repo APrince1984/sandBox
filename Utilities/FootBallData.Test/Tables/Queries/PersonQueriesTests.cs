@@ -9,7 +9,7 @@ using Utilities;
 namespace FootBallData.Test.Tables.Queries
 {
     [TestFixture]
-    public class PersonQueriesTest : DataTestBase
+    public class PersonQueriesTests : DataTestBase
     {
         [Test]
         public void GetPersonById_PersonDoesNotExist_ReturnsNull()
