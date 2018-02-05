@@ -88,15 +88,22 @@ namespace FootBallData.Test.Tables.Queries
             Assert.Throws<Exception>(() => PersonQueries.GetPersonsBetweenBirthDates(Context, bDate1, bDate2));
         }
 
+        [Test]
+        public void GetPersonBetweendDates_NoDatesGiven_ReturnsPersonsForTodaysDate()
+        {
+            CreatePerson(RandomUtil.GetRandomString(), RandomUtil.GetRandomString(), DateTime.Now.Date);
+            var persons = PersonQueries.GetPersonsBetweenBirthDates(Context);
+            Assert.IsNotEmpty(persons);
+        }
+
         private Person CreatePerson(string firstName = null, string lastName = null, DateTime? bDate = null)
         {
-            return PersonCommands.SavePerson(Context,
-                new Person
-                {
-                    FirstName = firstName ?? RandomUtil.GetRandomString(),
-                    LastName = lastName ?? RandomUtil.GetRandomString(),
-                    BirthDate = bDate ?? RandomUtil.GetRandomDateInThePast(1)
-                });
+            return PersonCommands.SavePerson(new Person
+            {
+                FirstName = firstName ?? RandomUtil.GetRandomString(),
+                LastName = lastName ?? RandomUtil.GetRandomString(),
+                BirthDate = bDate ?? RandomUtil.GetRandomDateInThePast(1)
+            },Context);
         }
 
         private static void SwitchDatesIfNeeded(ref DateTime bDate2, ref DateTime bDate1)

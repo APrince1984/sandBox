@@ -2,7 +2,7 @@
 {
     public static class TitleCommands
     {
-        public static Title SaveTitle(FootBallContext context, Title title)
+        public static Title SaveTitle(this Title title, FootBallContext context)
         {
             context.Titles.Add(title);
             context.SaveChanges();

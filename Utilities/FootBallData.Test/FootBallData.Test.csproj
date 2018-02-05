@@ -115,11 +115,14 @@
     <Compile Include="Tables\Commands\CompetitionCommandsTests.cs" />
     <Compile Include="Tables\Commands\PersonCommandsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tables\Commands\SerieCommandsTests.cs" />
     <Compile Include="Tables\Commands\TitleCommandsTests.cs" />
     <Compile Include="Tables\Queries\CompetitionQueriesTests.cs" />
     <Compile Include="Tables\Queries\PersonQueriesTests.cs" />
     <Compile Include="Tables\DataTestBase.cs" />
     <Compile Include="Tables\Queries\QueriesBaseTests.cs" />
+    <Compile Include="Tables\Queries\SerieQueriesTests.cs" />
+    <Compile Include="Tables\Queries\TeamQueriesTests.cs" />
     <Compile Include="Tables\Queries\TitleQueriesTests.cs" />
   </ItemGroup>
   <ItemGroup>
