@@ -7,23 +7,23 @@ using Utilities;
 namespace FootBallData.Test.Tables.Commands
 {
     [TestFixture]
-    public class PersonCommandsTests : DataTestBase
+    public class PersonCommandsTests : CommandsBaseTests
     {
         [Test]
-        public void SavePerson_PersonIsNew_PersonIsSaved()
+        public override void SaveEntity_EntityIsNew_EntityIsCreated()
         {
             var person = CreatePerson();
-                
+
             person = PersonCommands.SavePerson(Context, person);
             Assert.IsNotNull(person);
             Assert.IsNotNull(person.IdPerson);
         }
 
         [Test]
-        public void SavePerson_PersonExists_PersonIsUpdate()
+        public override void SaveEntity_EntityExists_EntityIsUpdated()
         {
             var person = CreatePerson();
-                
+
             person = PersonCommands.SavePerson(Context, person);
             Assert.IsNotNull(person);
             Assert.IsNotNull(person.IdPerson);
