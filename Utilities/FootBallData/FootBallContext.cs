@@ -9,11 +9,9 @@ namespace FootBallData
 {
     public class FootBallContext : DbContext
     {
-        public FootBallContext() : base()
+        public FootBallContext() : base(ConfigurationManager.ConnectionStrings["FootBallContext"].ConnectionString)
         {
-            var aaa = AppDomain.CurrentDomain.SetupInformation.ConfigurationFile;
-            var bbb = ConfigurationManager.ConnectionStrings;
-            var ccc = bbb.Count;
+           
         }
 
         public DbSet<Person> Persons { get; set; }
