@@ -11,9 +11,10 @@ namespace FootBallData
     {
         public FootBallContext() : base(ConfigurationManager.ConnectionStrings["FootBallContext"].ConnectionString)
         {
-           
         }
 
         public DbSet<Person> Persons { get; set; }
+
+        public DbSet<Title> Titles { get; set; }
     }
 }
