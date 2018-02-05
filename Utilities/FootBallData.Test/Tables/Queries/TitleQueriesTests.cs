@@ -8,21 +8,21 @@ using Utilities;
 namespace FootBallData.Test.Tables.Queries
 {
     [TestFixture]
-    public class TitleQueriesTests : DataTestBase
+    public class TitleQueriesTests : QueriesBaseTests
     {
         [Test]
-        public void GetTitleById_IdDoesNotExist_ReturnsNull()
+        public override void GetEntityById_EntityDoesExist_ReturnsEntity()
         {
-            Assert.IsNull(TitleQueries.GetTitleById(Context, -1));
-        }
-
-        [Test]
-        public void GetTitleById_TitleExists_ReturnsTitle()
-        {
-            var title = TitleCommands.SaveTitle(Context, new Title{Description = RandomUtil.GetRandomString()});
+            var title = TitleCommands.SaveTitle(Context, new Title { Description = RandomUtil.GetRandomString() });
             Assert.IsNotNull(TitleQueries.GetTitleById(Context, title.IdTitle));
         }
 
+        [Test]
+        public override void GetEntityById_EntityDoesNotExist_ReturnsNull()
+        {
+            Assert.IsNull(TitleQueries.GetTitleById(Context, -1));
+        }
+        
         [Test]
         public void GetTitleByPartOfDescription_ReturnsListOfTitles()
         {

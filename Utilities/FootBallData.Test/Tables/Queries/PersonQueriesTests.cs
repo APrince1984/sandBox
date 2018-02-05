@@ -9,21 +9,21 @@ using Utilities;
 namespace FootBallData.Test.Tables.Queries
 {
     [TestFixture]
-    public class PersonQueriesTests : DataTestBase
+    public class PersonQueriesTests : QueriesBaseTests
     {
         [Test]
-        public void GetPersonById_PersonDoesNotExist_ReturnsNull()
-        {
-            Assert.IsNull(PersonQueries.GetPersonById(Context, -1));
-        }
-
-        [Test]
-        public void GetPersonById_PersonExists_ReturnsPerson()
+        public override void GetEntityById_EntityDoesExist_ReturnsEntity()
         {
             var person = CreatePerson();
             Assert.IsNotNull(PersonQueries.GetPersonById(Context, person.IdPerson));
         }
 
+        [Test]
+        public override void GetEntityById_EntityDoesNotExist_ReturnsNull()
+        {
+            Assert.IsNull(PersonQueries.GetPersonById(Context, -1));
+        }
+        
         [Test]
         public void GetPersonByParthOfName_ReturnsListOfPersons_withExpectedFirstName()
         {

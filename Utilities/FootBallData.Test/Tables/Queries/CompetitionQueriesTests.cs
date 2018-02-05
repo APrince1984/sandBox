@@ -8,22 +8,8 @@ using Utilities;
 namespace FootBallData.Test.Tables.Queries
 {
     [TestFixture]
-    public class CompetitionQueriesTests : DataTestBase
+    public class CompetitionQueriesTests : QueriesBaseTests
     {
-        [Test]
-        public void GetCompetitionById_IdDoesNotExist_ReturnsNull()
-        {
-            Assert.IsNull(CompetitionQueries.GetCompetitionById(Context, -1));
-        }
-
-        [Test]
-        public void GetCompetitionById_IdExists_ReturnsCompetition()
-        {
-            var competition = CompetitionCommands.SaveCompetition(Context,
-                new Competition {Name = RandomUtil.GetRandomString(), Description = RandomUtil.GetRandomString(150)});
-            Assert.IsNotNull(CompetitionQueries.GetCompetitionById(Context, competition.IdCompetition));
-        }
-
         [Test]
         public void GetCompetitionByPartOfName_ReturnsListOfCompetitions()
         {
@@ -46,6 +32,20 @@ namespace FootBallData.Test.Tables.Queries
                 description.Substring(RandomUtil.GetRandomNumber(1), RandomUtil.GetRandomNumber(2) + 1));
             Assert.IsNotEmpty(competitions);
             Assert.IsNotNull(competitions.FirstOrDefault(c => c.Description == description));
+        }
+
+        [Test]
+        public override void GetEntityById_EntityDoesNotExist_ReturnsNull()
+        {
+            Assert.IsNull(CompetitionQueries.GetCompetitionById(Context, -1));
+        }
+
+        [Test]
+        public override void GetEntityById_EntityDoesExist_ReturnsEntity()
+        {
+            var competition = CompetitionCommands.SaveCompetition(Context,
+                new Competition { Name = RandomUtil.GetRandomString(), Description = RandomUtil.GetRandomString(150) });
+            Assert.IsNotNull(CompetitionQueries.GetCompetitionById(Context, competition.IdCompetition));
         }
     }
 }

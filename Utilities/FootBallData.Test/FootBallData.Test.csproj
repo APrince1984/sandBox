@@ -118,6 +118,7 @@
     <Compile Include="Tables\Queries\CompetitionQueriesTests.cs" />
     <Compile Include="Tables\Queries\PersonQueriesTests.cs" />
     <Compile Include="Tables\DataTestBase.cs" />
+    <Compile Include="Tables\Queries\QueriesBaseTests.cs" />
     <Compile Include="Tables\Queries\TitleQueriesTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +134,9 @@
       <Project>{35803993-280e-49a5-879b-7b2a7757c552}</Project>
       <Name>Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SqlScripts\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
