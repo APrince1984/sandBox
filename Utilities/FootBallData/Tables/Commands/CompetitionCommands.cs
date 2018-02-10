@@ -4,7 +4,7 @@ namespace FootBallData.Tables.Commands
 {
     public static class CompetitionCommands
     {
-        public static Competition SaveCompetition(this Competition competition, FootBallContext context) //, Competition competition)
+        public static Competition SaveCompetition(this Competition competition, FootBallContext context)
         {
             context.Competitions.AddOrUpdate(competition);
             context.SaveChanges();

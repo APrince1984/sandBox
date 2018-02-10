@@ -3,7 +3,7 @@
 namespace FootBallData.Test.Tables.Queries
 {
     [TestFixture]
-    public abstract class QueriesBaseTests : DataTestBase
+    public abstract class QueriesBaseTest : DataTestBase
     {
         [Test]
         public abstract void GetEntityById_EntityDoesNotExist_ReturnsNull();

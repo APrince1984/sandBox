@@ -22,5 +22,7 @@ namespace FootBallData
         public DbSet<Serie> Series { get; set; }
 
         public DbSet<Team> Teams { get; set; }
+
+        public DbSet<PersonTitle> PersonTitles { get; set; }
     }
 }

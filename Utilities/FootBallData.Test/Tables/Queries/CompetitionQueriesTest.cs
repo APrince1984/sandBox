@@ -8,7 +8,7 @@ using Utilities;
 namespace FootBallData.Test.Tables.Queries
 {
     [TestFixture]
-    public class CompetitionQueriesTests : QueriesBaseTests
+    public class CompetitionQueriesTest : QueriesBaseTest
     {
         [Test]
         public void GetCompetitionByPartOfName_ReturnsListOfCompetitions()
