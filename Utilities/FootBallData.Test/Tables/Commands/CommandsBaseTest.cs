@@ -3,7 +3,7 @@
 namespace FootBallData.Test.Tables.Commands
 {
     [TestFixture]
-    public abstract class CommandsBaseTests : DataTestBase
+    public abstract class CommandsBaseTest : DataTestBase
     {
         [Test]
         public abstract void SaveEntity_EntityIsNew_EntityIsCreated();

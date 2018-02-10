@@ -7,7 +7,7 @@ using Utilities;
 namespace FootBallData.Test.Tables.Queries
 {
     [TestFixture]
-    public class TeamQueriesTests : QueriesBaseTests
+    public class TeamQueriesTest : QueriesBaseTest
     {
         [Test]
         public override void GetEntityById_EntityDoesExist_ReturnsEntity()

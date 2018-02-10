@@ -7,7 +7,7 @@ using Utilities;
 namespace FootBallData.Test.Tables.Commands
 {
     [TestFixture]
-    public class PersonCommandsTests : CommandsBaseTests
+    public class PersonCommandsTest : CommandsBaseTest
     {
         [Test]
         public override void SaveEntity_EntityIsNew_EntityIsCreated()
